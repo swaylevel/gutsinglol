@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Message</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', Arial;
+            background: linear-gradient(#fff176, #ffe082);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* floating hearts & flowers */
+        .float {
+            position: absolute;
+            font-size: 24px;
+            animation: float 8s linear infinite;
+        }
+
+        @keyframes float {
+            from { top: 100%; }
+            to { top: -10%; }
+        }
+
+        /* first red popup */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: #e53935;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 60%;
+        }
+
+        button {
+            padding: 10px 22px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .continue {
+            background: white;
+            color: black;
+        }
+
+        #message {
+            display: none;
+            margin-top: 80px;
+            padding: 40px;
+            line-height: 1.7;
+        }
+
+        /* 3D popup */
+        .popup3d {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            transform: perspective(800px) rotateX(15deg);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+            animation: pop 0.5s;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0.3) rotateX(60deg); }
+            to { transform: scale(1) rotateX(15deg); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- floating emojis -->
+<script>
+    const emojis = ["❤️","🌸","🌼","💖","🌻"];
+    for(let i=0;i<30;i++){
+        let e = document.createElement("div");
+        e.className = "float";
+        e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+        e.style.left = Math.random()*100 + "%";
+        e.style.animationDuration = (5+Math.random()*5)+"s";
+        document.body.appendChild(e);
+    }
+</script>
+
+<!-- First popup -->
+<div class="modal" id="firstPopup">
+    <div class="box">
+        <h2>A message for Thanha 💛</h2>
+        <button class="continue" onclick="showMessage()">Continue</button>
+    </div>
+</div>
+
+<!-- Your message -->
+<div id="message">
+    <h2>Hey Tan,</h2>
+    <p>
+         I want to say, Ik I did many awful things, no matter what you say,  
+        I'm immature, I misunderstood many things, and I'm being unromantic,  
+        that doesn't mean I really am, but bcuz I hesitate cuz u may find me a pervert... nvm.<br><br>
+
+        So, I want to ask you for a last chance, and I won't repeat the mistakes I did ever again.  
+        I'll take care of you, and I'll always support, just stay with me.  
+        And I would like you to accept me in the future.  
+        If u find it cringe, it's okay, I wanna convince you.  
+        And I'll, please you can take ur time.<br><br>
+
+        I'll grow my eyebrows and hair, and I'll lose my weight.  
+        I'll help you in studies too, just once let my exams get over...
+    </p>
+
+    <p>
+        Thank You<br>
+        Yours faithfully<br>
+        <b>Swayanshu</b>
+    </p>
+
+    <button onclick="startPopup()">Continue</button>
+</div>
+
+<!-- 3D popup -->
+<div class="popup3d" id="finalPopup">
+    <div class="card">
+        <h2>Will you forgive me and accept me as your boyfriend?</h2>
+        <button onclick="accept()">Yes 💖</button>
+        <button onclick="reject()">No 😶</button>
+    </div>
+</div>
+
+<script>
+    function showMessage() {
+        firstPopup.style.display = "none";
+        message.style.display = "block";
+    }
+
+    function startPopup() {
+        finalPopup.style.display = "flex";
+    }
+
+    function reject() {
+        finalPopup.style.display = "none";
+        setTimeout(() => {
+            finalPopup.style.display = "flex";
+        }, 500);
+    }
+
+    function accept() {
+        alert("Thank you for giving me a chance ❤️");
+        finalPopup.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
